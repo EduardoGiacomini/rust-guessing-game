@@ -10,14 +10,18 @@ fn main() {
     println!("I will think about one number from 1 to 100 and you have to guess it. Let's start.");
 
     loop {
-        println!("Please, input your guess:");
-
         let mut guess = String::new();
+
+        println!("Please, input your guess:");
 
         io::stdin()
           .read_line(&mut guess)
           .expect("Failed to read the input guess");
-        let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(number) => number,
+            Err(_) => continue,
+        };
 
         println!("You guessed: {guess}");
 
