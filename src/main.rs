@@ -1,10 +1,11 @@
 use std::cmp::Ordering;
 use std::io;
+use std::ops::RangeInclusive;
 use rand::Rng;
 
 fn main() {
-    let secret_values_range = 1..=100;
-    let secret_number = rand::thread_rng().gen_range(secret_values_range);
+    const SECRET_VALUE_RANGE: RangeInclusive<u32> = 1..=100;
+    let secret_number = rand::thread_rng().gen_range(SECRET_VALUE_RANGE);
 
     println!("Hello, welcome to the Guessing Number Game.");
     println!("I will think about one number from 1 to 100 and you have to guess it. Let's start.");
